@@ -16,24 +16,40 @@ def select_sort(origin_items, comp=lambda x, y: x < y):
 
 
 if __name__ == '__main__':
-# select_sort()
+    # select_sort()
 
     print(select_sort(origin_items=[45, 3, 40, 100, 32, 1, 2, 5]))
-def bubble_sort(origin_items, comp=lambda x, y: x > y):
-    """高质量冒泡排序(搅拌排序)"""
-    items = origin_items[:]
-    for i in range(len(items) - 1):
-        swapped = False
-        for j in range(i, len(items) - 1 - i):
-            if comp(items[j], items[j + 1]):
-                items[j], items[j + 1] = items[j + 1], items[j]
-                swapped = True
-        if swapped:
-            swapped = False
-            for j in range(len(items) - 2 - i, i, -1):
-                if comp(items[j - 1], items[j]):
-                    items[j], items[j - 1] = items[j - 1], items[j]
-                    swapped = True
-        if not swapped:
-            break
-    return items
+
+
+# def bubble_sort(origin_items, comp=lambda x, y: x > y):
+#     """高质量冒泡排序(搅拌排序)"""
+#     items = origin_items[:]
+#     for i in range(len(items) - 1):
+#         swapped = False
+#         for j in range(i, len(items) - 1 - i):
+#             if comp(items[j], items[j + 1]):
+#                 items[j], items[j + 1] = items[j + 1], items[j]
+#                 swapped = True
+#         if swapped:
+#             swapped = False
+#             for j in range(len(items) - 2 - i, i, -1):
+#                 if comp(items[j - 1], items[j]):
+#                     items[j], items[j - 1] = items[j - 1], items[j]
+#                     swapped = True
+#         if not swapped:
+#             break
+#     return items
+def bubble_sort(nums):
+    for i in range(len(nums) - 1):
+        ex_flag = False
+        for j in range(len(nums) - i - 1):
+            if nums[j] > nums[j + 1]:
+                nums[j], nums[j + 1] = nums[j + 1], nums[j]
+                ex_flag = True
+        if not ex_flag:
+            return nums
+    return nums
+
+
+if __name__ == '__main__':
+    bubble_sort([5, 6, 10, 2, 58, 699, 70])
